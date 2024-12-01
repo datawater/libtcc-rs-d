@@ -1,0 +1,3 @@
+[submodule "lib/libtcc"]
+	path = lib/libtcc
+	url = https://github.com/TinyCC/tinycc

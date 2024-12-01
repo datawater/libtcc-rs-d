@@ -48,6 +48,7 @@ fn main() {
     } else {
         if target.contains("linux") {
             println!("cargo:rustc-link-search=native=/usr/local/lib");
+            println!("cargo:rustc-link-search=native=/usr/lib/x86_64-linux-gnu");
         }
         if let Ok(path) = env::var("LIB_TCC") {
             println!("cargo:rustc-link-search=native={}", path);
@@ -120,7 +121,7 @@ fn tcc_installed() -> bool {
     cmd.arg("src/libtcc_test.c")
         .arg("-o")
         .arg(tcc_tmp.join("a.out"))
-        .arg("-Isrc/tcc-0.9.27")
+        .arg("-I../lib/libtcc")
         .arg("-ltcc")
         .arg("-ldl")
         .arg("-lrt")
